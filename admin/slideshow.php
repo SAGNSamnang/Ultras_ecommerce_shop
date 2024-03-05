@@ -35,7 +35,7 @@
 			// Case Add Slideshow
 			case "1":
 				$title = $_POST['txttitle'];
-				$subtitle = $_POST['subtitle'];
+				$subtitle = $_POST['txtsubtitle'];
 				$text = $_POST['tatext'];
 				$link = $_POST['txtlink'];
 				$enable = "0";
