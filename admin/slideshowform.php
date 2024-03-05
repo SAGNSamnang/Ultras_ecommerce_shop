@@ -24,7 +24,7 @@
       </div>
       <div class="mb-3">
         <label for="fileimg" class="form-label">Choose slideshow image</label>
-        <input class="form-control form-control-sm" id="fileimg"  name ="fileimg" type="file" required>
+        <input class="form-control form-control-sm" id="fileimg"  name ="fileimg" type="file" accept="image/png, image/gif,, image/jpeg" required>
       </div>
       <input type="submit" value="Add slideshow" class="btn btn-primary">
       <a href="index.php?p=slideshow" class="btn btn-secondary">Cancel</a>
