@@ -35,7 +35,7 @@
 			// Case Add Slideshow
 			case "1":
 				$title = $_POST['txttitle'];
-				$subtitle = $_POST['subtitle'];
+				$subtitle = $_POST['txtsubtitle'];
 				$text = $_POST['tatext'];
 				$link = $_POST['txtlink'];
 				$enable = "0";
@@ -45,12 +45,20 @@
 				$result = dbSelect("tbl_slideshow", "ssorder", "", "order by ssorder desc limit 1");
 				$row = mysqli_fetch_array($result);
 				$ssorder = $row['ssorder'] + 1;
-				$img = "banner2.jpg";
+
+				// generate name(extensions) of images
+				$org_name = $_FILES["fileimg"]["name"];
+				$path_parts = pathinfo($org_name);
+				$ext = $path_parts['extension'];
+				$img = time() . "." . $ext;
+				$path = "../images/$img";
+
 				$data = ["title"=>"$title", "subtitle"=>"$subtitle", "text"=>$text, "link"=>$link, "enable"=>$enable, "ssorder"=>$ssorder];
 				$result = dbInsert("tbl_slideshow", $data);
 				if ($result) 
 				{
 					$error = 0;
+					move_uploaded_file($_FILES['fileimg']['tmp_name'], $path);
 					$error_message = "You have successfully to insert  a slideshow.";
 				}
 				else 
