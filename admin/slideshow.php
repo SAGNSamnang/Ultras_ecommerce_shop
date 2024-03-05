@@ -120,6 +120,8 @@
 	$current_page = 1;
 	if (isset($_GET['pg']))
 		$current_page = $_GET['pg'];
+	if (isset($action) && $action == "1")
+		$current_page = $numpage;
 	$offset = ($current_page - 1) * $maxperpage;
 	$result = dbSelect("tbl_slideshow", "*", "", "order by ssorder asc limit $maxperpage offset $offset");
 
